@@ -1,0 +1,107 @@
+$blue_color: #2596be;
+@mixin player_style{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1px;
+    //border: 1px solid white;
+    color: white;
+    width: 100%;
+
+
+    p{
+        margin: 0;
+    }
+    .wrapper{
+        margin-top: 0.5em;
+        width: 60%;
+    }
+}
+
+.background{
+    background-color: $blue_color;
+    width: 100%;
+    min-width: 100vw;
+    height: 100%;
+    min-height: 100vh;
+    display: grid;
+    
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    grid-template-areas:
+        "one two three"
+        "four five six"
+        "seven eight nine";
+    .player1{     
+        grid-area: two;
+        @include player_style();
+    }
+    .player2{
+        grid-area: eight;
+        @include player_style();
+    }
+    .player3 {
+        grid-area: four;
+        @include player_style();
+    }
+    .player4 {
+        grid-area: six;
+        @include player_style();
+    }
+    .dealer{
+        grid-area: five;
+        border: 1px solid white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+
+        p {
+            margin: 0;
+            width:fit-content;
+            margin-top: 0.5em;
+        }
+        .func{
+            margin-top: 0.5em;
+            width: 90%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            button{
+                width: calc((90% - 1em)/4);
+                padding: 0.5em;
+                font-size: 0.9em;
+                font-weight: 600;
+                border: 1px solid white;
+                color: white;
+                border-radius: 10px;
+                background-color: transparent;
+                cursor: pointer;
+            }
+            button:hover{
+                background-color: red;
+                color: white;
+            }
+            button:disabled{
+                background-color: gray;
+                color: white;
+            }
+        }
+        .next_round {
+            width: 90%;
+            margin-top: 0.5em;
+            padding: 0.5em;
+            font-size: 0.9em;
+            font-weight: 700;
+            border: 1px solid white;
+            color: white;
+            border-radius: 10px;
+            background-color: transparent;
+            cursor: pointer;
+        }
+        .next_round:hover{
+            background-color: red;
+            color: white;
+        }
+    }
+}
